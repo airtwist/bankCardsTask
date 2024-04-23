@@ -6,15 +6,17 @@ public abstract class BankCard {
     private BigDecimal balance;
 
     void deposit(BigDecimal amount) {
-       addBalance(amount);
+        addBalance(amount);
     }
+
     boolean payment(BigDecimal amount) {
         if (balance.compareTo(amount) >= 0) {
             subtractBalance(amount);
             return true;
         } else return false;
     }
-    void getBalanceInfo(){
+
+    void getBalanceInfo() {
         System.out.println("---------");
         System.out.println(balance);
     }
@@ -31,6 +33,7 @@ public abstract class BankCard {
     protected void addBalance(BigDecimal balance) {
         this.balance = this.balance.add(balance);
     }
+
     protected void subtractBalance(BigDecimal balance) {
         this.balance = this.balance.subtract(balance);
     }

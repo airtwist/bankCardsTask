@@ -27,6 +27,7 @@ public class CreditCard extends BankCard {
             addBalance(amount);
         }
     }
+
     @Override
     boolean payment(BigDecimal amount) {
         BigDecimal sumOfBalances = getBalance().add(creditBalance);

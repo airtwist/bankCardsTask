@@ -2,7 +2,7 @@ package org.example;
 
 import java.math.BigDecimal;
 
-public class FlyingMilesDebitCard extends DebitCard{
+public class FlyingMilesDebitCard extends DebitCard {
     private BigDecimal milesBalance = BigDecimal.ZERO;
 
     public FlyingMilesDebitCard(BigDecimal balance) {
@@ -16,10 +16,11 @@ public class FlyingMilesDebitCard extends DebitCard{
 
     @Override
     boolean payment(BigDecimal amount) {
-        if(super.payment(amount)){
+        if (super.payment(amount)) {
             addMiles(amount);
             return true;
-        } return false;
+        }
+        return false;
     }
 
     @Override
@@ -27,6 +28,7 @@ public class FlyingMilesDebitCard extends DebitCard{
         super.getBalanceInfo();
         System.out.println(this.milesBalance);
     }
+
     void addMiles(BigDecimal amount) {
         this.milesBalance = this.milesBalance.add(amount.divide(BigDecimal.valueOf(100)));
     }

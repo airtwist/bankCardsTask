@@ -2,8 +2,9 @@ package org.example;
 
 import java.math.BigDecimal;
 
-public class DepositSavingsDebitCard extends DebitCard{
+public class DepositSavingsDebitCard extends DebitCard {
     private final BigDecimal savingsBonusPercentage;
+
     public DepositSavingsDebitCard(BigDecimal balance, BigDecimal savingsBonusPercentage) {
         super(balance);
         this.savingsBonusPercentage = savingsBonusPercentage;
@@ -30,7 +31,7 @@ public class DepositSavingsDebitCard extends DebitCard{
         super.getBalanceInfo();
     }
 
-    void addBonusToBalance(BigDecimal amount){
+    void addBonusToBalance(BigDecimal amount) {
         addBalance(amount.multiply(savingsBonusPercentage));
     }
 

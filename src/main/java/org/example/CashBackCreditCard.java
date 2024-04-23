@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 public class CashBackCreditCard extends CreditCard {
     final private BigDecimal cashBackPercentage = BigDecimal.valueOf(0.005);
     final private BigDecimal cashBackThreshold = BigDecimal.valueOf(5000);
+
     public CashBackCreditCard(BigDecimal creditLimit, BigDecimal creditBalance, BigDecimal balance) {
         super(creditLimit, creditBalance, balance);
     }
