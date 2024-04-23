@@ -7,6 +7,7 @@ public class PremiumCreditCard extends CreditCard {
     final private BigDecimal depositSavingPercentage;
     final private BigDecimal bonusPointsPercentage;
     private BigDecimal bonusBalance = BigDecimal.ZERO;
+    private final BigDecimal cashBackThreshold = BigDecimal.valueOf(5000);
 
     public PremiumCreditCard(BigDecimal creditLimit, BigDecimal creditBalance, BigDecimal balance, BigDecimal cashBackPercentage, BigDecimal depositBonusPercentage, BigDecimal bonus) {
         super(creditLimit, creditBalance, balance);
@@ -34,7 +35,7 @@ public class PremiumCreditCard extends CreditCard {
     }
 
     BigDecimal addCashBackToBalance(BigDecimal amount) {
-        if (amount.compareTo(BigDecimal.valueOf(5000)) >= 0) {
+        if (amount.compareTo(cashBackThreshold) >= 0) {
             return amount.multiply(cashBackPercentage);
         } else return BigDecimal.ZERO;
     }

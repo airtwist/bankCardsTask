@@ -17,28 +17,20 @@ public class CashBackCreditCard extends CreditCard {
 
     @Override
     boolean payment(BigDecimal amount) {
-        BigDecimal sumOfBalances = getBalance().add(creditBalance);
-        if (getBalance().compareTo(amount) >= 0) {
-            subtractBalance(amount);
-            addBalance(cashBack(amount));
-            return true;
-        } else if (sumOfBalances.compareTo(amount) >= 0) {
-            subtractBalance(amount);
-            creditBalance = creditBalance.add(getBalance());
-            addBalance(getBalance().abs());
-            creditBalance = creditBalance.add(cashBack(amount));
+        if (super.payment(amount)) {
+            if (creditBalance.compareTo(creditLimit) < 0) {
+                creditBalance = creditBalance.add(addCashBackToBalance(amount));
+            } else {
+                addBalance(addCashBackToBalance(amount));
+            }
             return true;
         } else return false;
     }
 
-    BigDecimal cashBack(BigDecimal amount) {
+    BigDecimal addCashBackToBalance(BigDecimal amount) {
         if (amount.compareTo(cashBackThreshold) >= 0) {
             return amount.multiply(cashBackPercentage);
         } else return BigDecimal.ZERO;
     }
 
-    @Override
-    void getBalanceInfo() {
-        super.getBalanceInfo();
-    }
 }
