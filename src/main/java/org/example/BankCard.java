@@ -27,7 +27,7 @@ public abstract class BankCard {
         return balance;
     }
 
-    
+
     protected void addBalance(BigDecimal balance) {
         this.balance = this.balance.add(balance);
     }
